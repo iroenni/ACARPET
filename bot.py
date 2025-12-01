@@ -429,9 +429,9 @@ async def feedback_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Añadir nuevo feedback
         feedbacks.append(feedback_entry)
         
-        # Guardar
+        # Guardar - CORREGIDO: ensure_ascii=False solo una vez
         with open('feedback.json', 'w', encoding='utf-8') as f:
-            json.dump(feedbacks, f, indent=2, ensure_ascii=False, ensure_ascii=False)
+            json.dump(feedbacks, f, indent=2, ensure_ascii=False)  # <-- CORRECCIÓN AQUÍ
         
         await update.message.reply_text(
             "✅ *Feedback enviado*\n\n"
